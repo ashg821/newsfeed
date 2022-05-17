@@ -15,13 +15,14 @@ export class News extends Component {
     pageSize: 9,
     category: "general"
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       loading: false,
-      pages: 1,
+      pages: 1
     };
+    document.title=`${this.props.category[0].toUpperCase()+this.props.category.slice(1)}-NewsFeed`;
   }
   async updateNews() {
     this.setState({
@@ -54,7 +55,7 @@ export class News extends Component {
   render() {
     return (
       <div className="container my-3">
-        <h1 className="my-3 text-center">Top headines of the day</h1>
+        <h1 className="my-4 text-center">{`${this.props.category[0].toUpperCase()+this.props.category.slice(1)}`} Top Headlines</h1>
         <div className="container d-flex justify-content-between">
           <button
             disabled={this.state.pages <= 1}
