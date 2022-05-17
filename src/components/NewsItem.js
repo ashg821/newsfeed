@@ -1,12 +1,10 @@
-import { getByTitle } from "@testing-library/react";
-import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 export class NewsItem extends Component {
   static propTypes = {};
 
   render() {
-    let { title, desc, imgUrl, newsUrl } = this.props;
+    let { title, desc, imgUrl, newsUrl, author, publishedAt, source } = this.props;
     return (
       <div>
         <div className="card" style={{ width: "18rem" }}>
@@ -14,12 +12,17 @@ export class NewsItem extends Component {
             src={imgUrl}
             className="card-img-top"
             alt="..."
-            style={{height: "200px"}}
+            style={{ height: "200px" }}
           />
           <div className="card-body">
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{left: '90%', zIndex: '1'}}>
+              {source}
+              
+            </span>
             <h5 className="card-title">{title}...</h5>
             <p className="card-text">{desc}...</p>
-            <a href={newsUrl} className="btn btn-sm btn-dark" target="_blank">
+            <p className="card-text"><small class="text-muted">By {author} published on date {new Date(publishedAt).toGMTString()}</small></p>
+            <a href={newsUrl} className="btn btn-sm btn-dark" target="_blank" rel="noopener noreferrer">
               Read More
             </a>
           </div>
