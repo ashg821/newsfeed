@@ -31,8 +31,9 @@ export class News extends Component {
     });
     this.props.setProgress(30);
     let data = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=f8d3cd14977d410ab3964f71f868e138&page=${this.state.pages}&&pageSize=${this.props.pageSize}`
+      `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.pages}&&pageSize=${this.props.pageSize}`
     );
+    console.log(this.props.apiKey);
     this.props.setProgress(50);
     let parsedData = await data.json();
     this.setState({
@@ -78,7 +79,7 @@ export class News extends Component {
           </button>
         </div> */}
         {this.state.loading === true && <Spinner />}
-        <div className="row" style={{ marginLeft: "20px " }}>
+        <div className="row">
           {!(this.state.loading) && this.state.articles.map((element) => {
             if (
               element.urlToImage !== null &&
