@@ -11,7 +11,7 @@ import {
 
 const App=()=>{
   const pageSize=6;
-  const [progress, setProgress]=useState(10);
+  const [progress, setProgress]=useState(0);
   const apiKey=process.env.REACT_APP_NEWS_API;
     return (
       <div>
